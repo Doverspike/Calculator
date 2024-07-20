@@ -1,0 +1,114 @@
+    .flexbox {
+        display: flex;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+    }
+
+    .calcBody {
+        display: flex;
+        width: 600px;
+        height: 425px;
+        border-style: solid;
+        border-radius: 25px;
+        border: 7px;
+        border-color: #1524ab;
+        background-color: #647cb5;
+
+    }
+
+    .leftHalf {
+        display: flex;
+        width: 375px;
+        border-radius: 25px;
+        background-color:rgb(178, 202, 221);
+        margin: 10px;
+        box-sizing: border-box;
+        overflow: hidden;
+        flex-direction: column;
+
+    }
+    .rightHalf {
+        display: flex;
+        width: 190px;
+        border-radius: 25px;
+        background-color:rgb(8, 26, 43);
+        margin: 10px; 
+        flex-direction: column; 
+    }
+    .historyWindow {
+        
+    }
+
+    .resultWindow {
+        width: 367px;
+        height: 80px;
+        background-color: white;
+        border-radius: 25px;
+        border: 2px;
+        border-style: solid;
+        border-color:#1524ab
+
+    }
+
+    .buttonRow {
+        width: 375px;
+        flex: 1;
+        display: flex;
+        justify-content: center;
+    }
+
+    .buttonSection {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;        
+    }
+
+    .largeButton {
+        text-align: center;
+        height: 50px;
+        width: 154px;
+        flex-wrap: wrap;
+        font-size: larger;
+        border-radius: 5px;
+        background-color:rgb(204, 220, 232);
+        border-color: rgb(50, 64, 168);
+    }
+
+    .largeLeft {
+        display: flex;
+    }
+    .largeRight {
+        display:flex;
+    }
+    .inputButton {
+        text-align: center;
+        height: 60px;
+        width: 88px;
+        flex-wrap: wrap;
+        font-size: large;
+        border-radius: 25px;
+        background-color:rgb(204, 220, 232);
+        border-color: rgb(50, 64, 168);
+        margin: 1px;
+
+    }
+
+    .topHalf {
+        display: flex;
+        flex-direction: row;    
+        flex: 1;
+        justify-content: space-around;
+        height: 69px;
+        width: 475px;
+        width: 100%;
+        align-items: center;
+    }
+
+    .buttonHalf {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+    }

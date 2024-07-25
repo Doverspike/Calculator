@@ -16,26 +16,34 @@ const multiple = document.getElementById("*");
 const minus = document.getElementById("-");
 const plus = document.getElementById("+");
 const equals = document.getElementById("=");
+const historyWindow = document.getElementById("historyWindow");
+const resultNumber = document.getElementById("resultNumber");
 
-
-let firstNumber = NaN;
-let secondNumber = NaN;
-let action = NaN;
+let firstNumber = null;
+let secondNumber = null;
+let action = null;
 
 function addNumber(input) {
-    if (action = NaN) {
-        if (firstNumber = NaN) {
-        firstNumber = input;
+    let hold = input;
+        
+    if (action == null || firstNumber == null) {
+        if (firstNumber == null) {
+            firstNumber = hold;
         } else {
-            firstNumber += input;
-        }
+            if (firstNumber.search(/\./) >= 0 && hold == ".") {
+                return;
+            }
+            firstNumber += hold;
+        } resultNumber.innerHTML = firstNumber;
     } else { 
-        if (secondNumber = NaN) {
-            secondNumber = input
-            
+        if (secondNumber == null) {
+            secondNumber = hold
         } else {
-        secondNumber += input;
-    }
+            if (secondNumber.search(/\./) >= 0 && hold == ".") {
+                return;
+            }
+        secondNumber += hold;
+    } resultNumber.innerHTML = secondNumber;
 }};
 zeroButton.addEventListener("click", () => {
     addNumber("0");
@@ -83,39 +91,76 @@ plus.addEventListener("click", () => {
     action = "+";
 });
 clearButton.addEventListener("click", () => {
-    firstNumber = NaN;
-    secondNumber = NaN;
-    action = NaN;
+    firstNumber = null;
+    secondNumber = null;
+    action = null;
+    resultNumber.innerHTML = firstNumber;
 });
 deleteButton.addEventListener("click", () => {
-    if (action = NaN) {
+    if (action == null) {
         firstNumber = firstNumber.slice(0, firstNumber.length - 1);
+        resultNumber.innerHTML = firstNumber;
     } else {
-        secondNumber = secondNumber.slice(0, secondNumber - 1);
+        secondNumber = secondNumber.slice(0, secondNumber.length - 1);
+        resultNumber.innerHTML = secondNumber;
     }
 });
 
 equals.addEventListener("click", () => {
-    let first = firstNumber;
-    Number(first);
-    let second = secondNumber;
-    Number(second);
-
+    let first = Number(firstNumber);
+    let second = Number(secondNumber);
+    let div;
     switch (action) {
         case "/":
-            
+            if (second == 0) {
+                resultNumber.innerHTML = "I'm afraid I can't do that, Dave.";
+                firstNumber = null;
+                secondNumber = null;
+                action = null;
+            } else {
+            firstNumber = String(first / second);
+            secondNumber = null;
+            action = null;
+            div = document.createElement("div");
+            div.classList.add("historyWindowDiv");
+            historyWindow.appendChild(div);
+            resultNumber.innerHTML = firstNumber;
+            div.innerHTML = firstNumber;
+            }
         break;
         case "*":
-
+            firstNumber = String(first * second);
+            secondNumber = null;
+            action = null;
+            div = document.createElement("div");
+            div.classList.add("historyWindowDiv");
+            historyWindow.appendChild(div);
+            resultNumber.innerHTML = firstNumber;
+            div.innerHTML = firstNumber;
         break;
         case "-":
-
+            firstNumber = String(first - second);
+            secondNumber = null;
+            action = null;
+            div = document.createElement("div");
+            div.classList.add("historyWindowDiv");
+            historyWindow.appendChild(div);
+            resultNumber.innerHTML = firstNumber;
+            div.innerHTML = firstNumber;
         break;
         case "+":
-
+            firstNumber = String(first + second);
+            secondNumber = null;
+            action = null;
+            div = document.createElement("div");
+            div.classList.add("historyWindowDiv");
+            historyWindow.appendChild(div);
+            resultNumber.innerHTML = firstNumber;
+            div.innerHTML = firstNumber;
         break;
 
     }
+
 
 });
 

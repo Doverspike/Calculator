@@ -22,7 +22,8 @@ const resultNumber = document.getElementById("resultNumber");
 let firstNumber = null;
 let secondNumber = null;
 let action = null;
-
+// add the number to either the first or second variable depending on if the action variable is null or not.
+// doesn't allow user to input more than 1 period.
 function addNumber(input) {
     let hold = input;
         
@@ -79,16 +80,16 @@ pointButton.addEventListener("click", () => {
     addNumber(".");
 });
 divide.addEventListener("click", () => {
-    action = "/";
+    addAction("/");
 });
 multiple.addEventListener("click", () => {
-    action = "*";
+    addAction("*");
 });
 minus.addEventListener("click", () => {
-    action = "-";
+    addAction("-");
 });
 plus.addEventListener("click", () => {
-    action = "+";
+    addAction("+");
 });
 clearButton.addEventListener("click", () => {
     firstNumber = null;
@@ -105,11 +106,18 @@ deleteButton.addEventListener("click", () => {
         resultNumber.innerHTML = secondNumber;
     }
 });
-
-equals.addEventListener("click", () => {
+function addAction(input) {
+    if (firstNumber != null && secondNumber != null) {
+        doTheMath();
+    } action = input;
+}
+function doTheMath() {
     let first = Number(firstNumber);
     let second = Number(secondNumber);
     let div;
+    if (firstNumber == null || secondNumber == null) {
+        return;
+    }
     switch (action) {
         case "/":
             if (second == 0) {
@@ -117,50 +125,31 @@ equals.addEventListener("click", () => {
                 firstNumber = null;
                 secondNumber = null;
                 action = null;
+                return;
             } else {
             firstNumber = String(first / second);
-            secondNumber = null;
-            action = null;
-            div = document.createElement("div");
-            div.classList.add("historyWindowDiv");
-            historyWindow.appendChild(div);
-            resultNumber.innerHTML = firstNumber;
-            div.innerHTML = firstNumber;
             }
         break;
         case "*":
             firstNumber = String(first * second);
-            secondNumber = null;
-            action = null;
-            div = document.createElement("div");
-            div.classList.add("historyWindowDiv");
-            historyWindow.appendChild(div);
-            resultNumber.innerHTML = firstNumber;
-            div.innerHTML = firstNumber;
         break;
         case "-":
             firstNumber = String(first - second);
-            secondNumber = null;
-            action = null;
-            div = document.createElement("div");
-            div.classList.add("historyWindowDiv");
-            historyWindow.appendChild(div);
-            resultNumber.innerHTML = firstNumber;
-            div.innerHTML = firstNumber;
         break;
         case "+":
             firstNumber = String(first + second);
-            secondNumber = null;
-            action = null;
-            div = document.createElement("div");
-            div.classList.add("historyWindowDiv");
-            historyWindow.appendChild(div);
-            resultNumber.innerHTML = firstNumber;
-            div.innerHTML = firstNumber;
         break;
 
-    }
-
-
+    } 
+        div = document.createElement("div");
+        div.classList.add("historyWindowDiv");
+        historyWindow.appendChild(div);
+        resultNumber.innerHTML = firstNumber;
+        div.innerHTML = firstNumber;
+        secondNumber = null;
+        action = null;
+}
+equals.addEventListener("click", () => {
+    doTheMath();
 });
 

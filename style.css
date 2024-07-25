@@ -2,9 +2,16 @@
         display: flex;
     }
 
+    html {
+        height: 100%;        
+    }
     body {
         display: flex;
         justify-content: center;
+        background-color: rgb(150, 152, 182);
+        align-content: center;
+        min-height: 100%;
+        align-items: center;
     }
 
     .calcBody {
@@ -126,7 +133,13 @@
         background-color:rgb(204, 220, 232);
         border-color: rgb(50, 64, 168);
         margin: 1px;
+    }
+    .operator {
+        background-color: rgb(133, 176, 209);
+    }
 
+    .equalsOp {
+        background-color: rgb(221, 158, 116);
     }
 
     .topHalf {

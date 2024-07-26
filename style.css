@@ -18,12 +18,11 @@
         display: flex;
         width: 600px;
         height: 425px;
-        border-style: solid;
         border-radius: 25px;
-        border: 7px;
-        border-color: #1524ab;
+        border: 6px;
+        border-color: #000000;
         background-color: #647cb5;
-
+        border-style: ridge;
     }
 
     .leftHalf {
@@ -35,7 +34,6 @@
         box-sizing: border-box;
         overflow: hidden;
         flex-direction: column;
-
     }
     .rightHalf {
         display: flex;
@@ -44,29 +42,25 @@
         background-color:rgb(8, 26, 43);
         margin: 10px; 
         flex-direction: row;
-        
     }
     .historyWindow {
         overflow-y: scroll;
-        
         width: 180px;
         margin: 10px;
         color: white;
-        
         flex-direction: column;
     }
     .historyWindowDiv {
         min-width: 160px;
         height: 30px;
         color: white;
-        
     }
 
     ::-webkit-scrollbar {
         width: 10px;
     }
     ::-webkit-scrollbar-track {
-        background: #f1f1f1;
+        background: rgb(8, 26, 43);
     }
     ::-webkit-scrollbar-thumb {
         background: #888;
@@ -77,6 +71,7 @@
 
     .resultWindow {
         width: 366px;
+        max-width: 366px;
         height: 80px;
         background-color: white;
         border-radius: 25px;
@@ -86,7 +81,6 @@
         display: flex;
         justify-content: end;
         align-items: center;
-
     }
     .resultNumber {
         margin-left: 20px;
